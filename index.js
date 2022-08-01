@@ -48,7 +48,6 @@ const user = [
 app.get("/user", (req, res) => {
   const search = req.query.search;
   if (search) {
-    console.log(search);
     const searchResult = user.filter((data) =>
       data.name.toLocaleLowerCase().includes(search)
     );
@@ -69,7 +68,6 @@ app.get("/user/:id", (req, res) => {
 
 app.get("/userQuery", (req, res) => {
   const id = req.query.search[0];
-  console.log(id);
 
   res.send(user);
 });
@@ -79,7 +77,7 @@ app.post("/user", (req, res) => {
   const singleUser = req.body;
   singleUser.id = user.length + 1;
   user.push(singleUser);
-  res.send(singleUser);
+  res.send(user);
 });
 
 app.listen(port, () => {
